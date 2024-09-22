@@ -124,7 +124,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     </header>
 
 <body>
-    <div class="container mt-5">
+    <style>
+        .mt-200 {
+            margin-top: 200px;
+        }
+    </style>
+    <div class="container mt-200">
         <h2 class="text-success text-center mb-4">Créer un rapport vétérinaire</h2>
         <?php if ($alert_message): ?>
             <div class="alert <?php echo $alert_class; ?>" role="alert">

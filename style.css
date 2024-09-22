@@ -503,3 +503,23 @@ body {
     display: flex;
     justify-content: space-around;
 }
+
+.choix_gestion_service {
+    display: flex;
+    justify-content: space-around;
+    margin: 20px 0;
+}
+
+.titre_modification_horaires {
+    text-align: center;
+    margin: 40px auto;
+}
+
+.horaire-card {
+    display: flex;
+    justify-content: space-around;
+}
+
+.valider_avis {
+    margin-top: 150;
+}

@@ -1,0 +1,19 @@
+-- ADMIN -- 
+username : jose@arcadia.fr
+password : Arcadia2024
+
+-- EMPLOYES -- 
+username : john@doe.fr
+password : johndoe
+
+username : nicolas@martin.fr
+password : nicolasmartin
+
+
+-- VETERINAIRES -- 
+
+username : antoine@petit.fr
+password : antoinepetit
+
+username : georges@grand.fr
+password : georges@grand.fr
