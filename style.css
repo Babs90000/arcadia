@@ -523,3 +523,42 @@ body {
 .valider_avis {
     margin-top: 150;
 }
+
+
+.table_alimentation {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    font-size: 18px;
+    text-align: left;
+}
+
+.table_alimentation thead tr {
+    background-color: #009879;
+    color: #ffffff;
+    text-align: left;
+    font-weight: bold;
+}
+
+.table_alimentation th, .table_alimentation td {
+    padding: 12px 15px;
+    border: 1px solid #dddddd;
+}
+
+.table_alimentation tbody tr {
+    border-bottom: 1px solid #dddddd;
+}
+
+.table_alimentation tbody tr:nth-of-type(even) {
+    background-color: #f3f3f3;
+}
+
+.table_alimentation tbody tr:last-of-type {
+    border-bottom: 2px solid #009879;
+}
+
+.suivi_nourriture_animaux {
+    display: flex;
+    justify-content: space-around;
+    margin: 20px 0;
+}
