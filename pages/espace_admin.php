@@ -27,13 +27,13 @@ switch ($role_utilisateur) {
         $role_label = 'Utilisateur';
         break;
 }
-$base_url = 'http://' . $_SERVER['HTTP_HOST'] . '/arcadia/';
+$base_url = 'http://' . $_SERVER['arcadia-project-155bc9d56c41.herokuapp.com/'] . '/arcadia/';
 ?>
 <link rel=stylesheet href="./style_espace_utilisateur.css">
 <main>
     <div class="container">
         <h1>Bienvenue dans l'Espace Admin</h1>
-        <p>Bonjour <?php echo htmlspecialchars($prenom); ?>, vous êtes connecté !</p>
+        <p>Bonjour <?php echo $prenom; ?>, vous êtes connecté !</p>
         <a href="<?php echo $base_url; ?>fonctionnalités/gestion_service.php">Gestion des services</a><br>
         <a href="<?php echo $base_url; ?>fonctionnalités/inscription_utilisateur.php">Gestion des utilisateurs</a><br>
         <a href="<?php echo $base_url; ?>fonctionnalités/gestion_animaux.php">Gestion des animaux</a><br>
