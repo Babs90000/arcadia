@@ -4,7 +4,7 @@ require_once '../template/header.php';
 
 
 if (!isset($_SESSION['role']) || $_SESSION['role'] !== 1) {
- 
+
     header('Location: connexion_utilisateur.php');
     exit();
 }
@@ -27,23 +27,25 @@ switch ($role_utilisateur) {
         $role_label = 'Utilisateur';
         break;
 }
+$base_url = 'http://' . $_SERVER['HTTP_HOST'] . '/arcadia/';
 ?>
 <link rel=stylesheet href="./style_espace_utilisateur.css">
 <main>
-        <div class="container">
-            <h1>Bienvenue dans l'Espace Admin</h1>
-            <p>Bonjour <?php echo $prenom; ?>, vous êtes connecté !</p>
-            <a href="/arcadia/fonctionnalités/gestion_service.php">Gestion des services</a><br>
-            <a href="/arcadia/fonctionnalités/inscription_utilisateur.php">Gestion des utilisateurs</a><br>
-            <a href="arcadia/fonctionnalités/gestion_animaux.php">Gestion des animaux</a><br>
-            <a href="arcadia/pages/gestion_habitat.php">Gestion des habitats</a><br>
-            <a href="arcadia/fonctionnalités/modification_horaire.php">Modification des horaires</a><br>
-            <a href="arcadia/pages/rapports_veterinaires.php">Rapports vétérinaires</a><br>
-            <a href="arcadia/fonctionnalités/valider_avis.php">Valider un avis </a><br>
-        
-        </div>
-    </main>
+    <div class="container">
+        <h1>Bienvenue dans l'Espace Admin</h1>
+        <p>Bonjour <?php echo htmlspecialchars($prenom); ?>, vous êtes connecté !</p>
+        <a href="<?php echo $base_url; ?>fonctionnalités/gestion_service.php">Gestion des services</a><br>
+        <a href="<?php echo $base_url; ?>fonctionnalités/inscription_utilisateur.php">Gestion des utilisateurs</a><br>
+        <a href="<?php echo $base_url; ?>fonctionnalités/gestion_animaux.php">Gestion des animaux</a><br>
+        <a href="<?php echo $base_url; ?>pages/gestion_habitat.php">Gestion des habitats</a><br>
+        <a href="<?php echo $base_url; ?>fonctionnalités/modification_horaire.php">Modification des horaires</a><br>
+        <a href="<?php echo $base_url; ?>pages/rapports_veterinaires.php">Rapports vétérinaires</a><br>
+        <a href="<?php echo $base_url; ?>fonctionnalités/valider_avis.php">Valider un avis</a><br>
 
-   
+    </div>
+</main>
+
+
 </body>
+
 </html>
