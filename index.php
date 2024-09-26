@@ -51,19 +51,12 @@
         Depuis 1960, le Zoo Arcadia est un havre de biodiversité situé près de la légendaire forêt de Brocéliande en Bretagne. Notre zoo abrite une grande variété d’animaux, soigneusement regroupés par habitat : savane, jungle et marais. Nous mettons un point d’honneur à assurer le bien-être de nos résidents grâce à des contrôles vétérinaires quotidiens et une alimentation rigoureusement dosée.</p>
       </div>
       <!-- Fin texte de présentation arcadia -->
-       <!-- Bloc horizontal pour les habitats -->
-      <!-- Bloc horizontal pour les habitats -->
+  
       <div class="container my-5">
         <div class="block_habitats">
             <h2 class="text-success text-center mb-4">Nos Habitats</h2>
             <div class="row habitats_list">
                 <?php
-                try {
-                    $bdd = new PDO('mysql:host=localhost;dbname=arcadia', 'root', '');
-                    $bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-                } catch (PDOException $e) {
-                    die('Erreur de connexion : ' . $e->getMessage());
-                }
 
                 $sql = "SELECT habitat_id, nom FROM habitats WHERE nom IN ('savane', 'jungle', 'marais')";
                 $habitats = $bdd->query($sql)->fetchAll(PDO::FETCH_ASSOC);
@@ -88,7 +81,7 @@
             <p class="text-center mt-4"><a href="./pages/page_habitat.php" class="btn btn-success">Cliquez ici pour en savoir plus</a></p>
         </div>
     </div>
-  <!-- Fin bloc horizontal pour les habitats -->
+ 
 
       <div class="block_avis">
         <h2>Ce que disent nos visiteurs</h2>
