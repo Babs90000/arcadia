@@ -1,7 +1,6 @@
 <?php
 require_once '../template/header.php';
 
-
 $sql = "SELECT animaux.prenom, alimentation.date, alimentation.type_nourriture, alimentation.quantite_grammes, alimentation.heure 
         FROM alimentation 
         JOIN animaux ON alimentation.animal_id = animaux.animal_id 
