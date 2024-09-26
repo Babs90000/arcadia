@@ -1,15 +1,11 @@
 <?php require_once '../template/header.php'; ?>
+
 <div class="containerDetailHabitat ">
         <h2 class="text-success text-center mb-4">Détail de l'Habitat</h2>
         <div class="card mb-4 text-center">
             <div class="card-body">
                 <?php
-                try {
-                    $bdd = new PDO('mysql:host=localhost;dbname=arcadia', 'root', '');
-                    $bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-                } catch (PDOException $e) {
-                    die('Erreur de connexion : ' . $e->getMessage());
-                }
+            
 
                 if (isset($_GET['habitat_id'])) {
                     $habitat_id = $_GET['habitat_id'];
