@@ -1,12 +1,5 @@
 <?php
-
-try {
-    $bdd = new PDO('mysql:host=localhost;dbname=arcadia', 'root', '');
-    $bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-} catch (PDOException $e) {
-    die('Erreur de connexion : ' . $e->getMessage());
-}
-
+require_once '../template/header.php'; 
 
 $sql = "SELECT services.*, images.image_data 
         FROM services 
@@ -17,17 +10,10 @@ $services = $bdd->query($sql)->fetchAll(PDO::FETCH_ASSOC);
 
 <!DOCTYPE html>
 <html lang="fr">
-<?php include '../template/header.php'; ?>
 <div class="containerServices ">
         <h2 class="text-success text-center mb-4">Nos Services</h2>
         <div class="row">
             <?php
-            try {
-                $bdd = new PDO('mysql:host=localhost;dbname=arcadia', 'root', '');
-                $bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-            } catch (PDOException $e) {
-                die('Erreur de connexion : ' . $e->getMessage());
-            }
 
             $sql = "SELECT services.*, images.image_data 
                     FROM services 
