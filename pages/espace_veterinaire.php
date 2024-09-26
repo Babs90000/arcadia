@@ -44,8 +44,6 @@ switch ($role_utilisateur) {
 
     </div>
 </main>
-
-
 </body>
 
 </html>
