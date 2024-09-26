@@ -8,7 +8,6 @@ if (!isset($_SESSION['role']) || $_SESSION['role'] !== 2) {
     exit();
 }
 
-
 $role_utilisateur = $_SESSION['role'];
 $prenom = $_SESSION['prenom'];
 $role_label = '';
@@ -38,9 +37,6 @@ switch ($role_utilisateur) {
 <a href="../fonctionnalités/valider_avis.php">Valider un avis </a>
         
         </div>
-    </main>
-
-   
+    </main>  
 </body>
 </html>
-
