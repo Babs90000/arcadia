@@ -5,12 +5,7 @@
         <h2 class="text-success text-center mb-4">Nos Habitats</h2>
         <div class="row">
             <?php
-            try {
-                $base_de_donnees = new PDO('mysql:host=localhost;dbname=arcadia', 'root', '');
-                $base_de_donnees->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-            } catch (PDOException $e) {
-                die('Erreur de connexion : ' . $e->getMessage());
-            }
+    
 
             $sql = "SELECT habitats.*, images.image_data FROM habitats LEFT JOIN images ON habitats.habitat_id = images.habitat_id";
             $habitats = $base_de_donnees->query($sql)->fetchAll(PDO::FETCH_ASSOC);
@@ -36,7 +31,5 @@
             ?>
         </div>
     </div>
-
-
     
 <?php require_once '../template/footer.php'; ?>
