@@ -9,9 +9,6 @@ if (!isset($_SESSION['role']) || $_SESSION['role'] !== 1) {
     exit();
 }
 
-
-
-
 $role_utilisateur = $_SESSION['role'];
 $prenom = $_SESSION['prenom'];
 $role_label = '';
