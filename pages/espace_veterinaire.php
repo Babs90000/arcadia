@@ -14,7 +14,6 @@ if (!isset($_SESSION['role']) || $_SESSION['role'] !== 3) {
     exit();
 }
 
-
 $role_utilisateur = $_SESSION['role'];
 $prenom = $_SESSION['prenom'];
 $role_label = '';
@@ -45,5 +44,4 @@ switch ($role_utilisateur) {
     </div>
 </main>
 </body>
-
 </html>
