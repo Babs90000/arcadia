@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Détail de l'Animal - Zoo Arcadia</title>
-    <!-- Inclure Bootstrap CSS -->
+    
     
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="../style.css" />
@@ -16,12 +16,7 @@
         <div class="card mb-4">
             <div class="card-body text-center">
                 <?php
-                try {
-                    $base_de_donnees = new PDO('mysql:host=localhost;dbname=arcadia', 'root', '');
-                    $base_de_donnees->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-                } catch (PDOException $e) {
-                    die('Erreur de connexion : ' . $e->getMessage());
-                }
+              require_once './env.php';
 
                 if (isset($_GET['animal_id'])) {
                     $animal_id = $_GET['animal_id'];
@@ -34,10 +29,10 @@
                     $animal = $statement->fetch(PDO::FETCH_ASSOC);
 
                     if ($animal) {
-                        echo "<h3 class='text-success'>" . htmlspecialchars($animal['prenom']) . "</h3>";
-                        echo "<p><strong>Race:</strong> " . htmlspecialchars($animal['race_label']) . "</p>";
-                        echo "<p><strong>Âge:</strong> " . htmlspecialchars($animal['age']) . " ans</p>";
-                        echo "<p><strong>Description:</strong> " . htmlspecialchars($animal['description']) . "</p>";
+                        echo "<h3 class='text-success'>" . $animal['prenom'] . "</h3>";
+                        echo "<p><strong>Race:</strong> " . $animal['race_label'] . "</p>";
+                        echo "<p><strong>Âge:</strong> " . $animal['age'] . " ans</p>";
+                        echo "<p><strong>Description:</strong> " . $animal['description'] . "</p>";
 
                         $sql = "SELECT image_data FROM images WHERE animal_id = :animal_id";
                         $statement = $base_de_donnees->prepare($sql);
