@@ -1,16 +1,10 @@
 <?php
 session_start();
+require_once '../env.php';
 
 if (!isset($_SESSION['role']) || ($_SESSION['role'] != 1 && $_SESSION['role'] != 2)) {
     echo 'Accès refusé. Seuls les administrateurs et les employés peuvent accéder à cette page.';
     exit();
-}
-
-try {
-    $base_de_donnees = new PDO('mysql:host=localhost;dbname=arcadia', 'root', '');
-    $base_de_donnees->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-} catch (PDOException $e) {
-    die('Erreur de connexion : ' . $e->getMessage());
 }
 
 $sql = "SELECT habitats.*, images.image_data FROM habitats LEFT JOIN images ON habitats.habitat_id = images.habitat_id";
