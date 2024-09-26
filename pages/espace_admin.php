@@ -1,13 +1,12 @@
 <?php
-
 require_once '../template/header.php';
-
 
 if (!isset($_SESSION['role']) || $_SESSION['role'] !== 1) {
  
     header('Location: connexion_utilisateur.php');
     exit();
 }
+
 
 $role_utilisateur = $_SESSION['role'];
 $prenom = $_SESSION['prenom'];
@@ -42,7 +41,5 @@ switch ($role_utilisateur) {
         
         </div>
     </main>
-
-   
 </body>
 </html>
