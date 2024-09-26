@@ -8,8 +8,6 @@
         <input type="text" id="search" name="search" placeholder="Entrez le prénom de l'animal">
         <button type="submit">Rechercher</button>
     </form>
-
-  
     <div class="rapports_veterinaires">
         <?php
 
