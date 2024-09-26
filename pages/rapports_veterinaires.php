@@ -3,22 +3,15 @@
 
     <h1>Rapports Vétérinaires</h1>
 
-    <!-- Formulaire de recherche -->
     <form method="GET" action="rapports_veterinaires.php">
         <label for="search">Rechercher par prénom de l'animal :</label>
         <input type="text" id="search" name="search" placeholder="Entrez le prénom de l'animal">
         <button type="submit">Rechercher</button>
     </form>
 
-    <!-- Affichage des rapports vétérinaires -->
+  
     <div class="rapports_veterinaires">
         <?php
-        try {
-            $bdd = new PDO('mysql:host=localhost;dbname=arcadia', 'root', '');
-            $bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        } catch (PDOException $e) {
-            die('Erreur de connexion : ' . $e->getMessage());
-        }
 
         $search = isset($_GET['search']) ? $_GET['search'] : '';
 
