@@ -1,25 +1,18 @@
 <?php
 session_start();
 
-try {
-  $bdd = new PDO('mysql:host=localhost;dbname=arcadia', 'root', '');
-  $bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-} catch (PDOException $e) {
-  echo 'Erreur de connexion : ' . $e->getMessage();
-  exit();
-}
+require_once './env.php';
 
-// Récupérer les horaires d'ouverture existants
 $sql = "SELECT type_jour, heure_ouverture, heure_fermeture FROM horaires_ouverture";
 $statement = $bdd->prepare($sql);
 $statement->execute();
 $horaires = $statement->fetchAll(PDO::FETCH_ASSOC);
 
-// Initialiser les variables pour les horaires
+
 $horaires_semaine = '';
 $horaires_autres = '';
 
-// Parcourir les résultats et assigner les horaires aux variables appropriées
+
 foreach ($horaires as $horaire) {
   if ($horaire['type_jour'] == 'En semaine') {
     $horaires_semaine = $horaire['heure_ouverture'] . ' - ' .$horaire['heure_fermeture'];
@@ -58,7 +51,7 @@ foreach ($horaires as $horaire) {
       src="https://kit.fontawesome.com/70e8dd41e8.js"
       crossorigin="anonymous"
     ></script>
-<!-- FIN POLICE D'ECRITURE -->
+
 
     <script defer href="../script.js"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
