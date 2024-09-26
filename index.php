@@ -1,6 +1,5 @@
 <?php require_once './template/header.php'; ?>
 
-
 <!-- Début Carrousel -->
     <main>
       <div class="container-main">
