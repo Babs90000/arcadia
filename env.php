@@ -1,7 +1,7 @@
 <?php
 
-if (getenv('JAWSDB_MARIA_URL') !== false) {
-    $url = getenv('JAWSDB_MARIA_URL');
+if (getenv('JAWSDB_URL') !== false) {
+    $url = getenv('JAWSDB_URL');
     $dbparts = parse_url($url);
   
     $hostname = $dbparts['host'];
@@ -16,7 +16,7 @@ if (getenv('JAWSDB_MARIA_URL') !== false) {
 }
 
 try {
-    // Utilisation correcte des variables dans la chaîne de connexion PDO
+    
     $bdd = new PDO("mysql:host=$hostname;dbname=$database", $username, $password);
     $bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 } catch (PDOException $e) {
