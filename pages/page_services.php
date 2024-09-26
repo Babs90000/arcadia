@@ -1,6 +1,7 @@
 <?php
 require_once '../template/header.php'; 
 
+
 $sql = "SELECT services.*, images.image_data 
         FROM services 
         LEFT JOIN images 
