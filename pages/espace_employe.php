@@ -2,8 +2,6 @@
 
 require_once '../template/header.php';
 
-
-
 if (!isset($_SESSION['role']) || $_SESSION['role'] !== 2) {
  
     header('Location: connexion_utilisateur.php');
