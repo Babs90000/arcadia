@@ -8,7 +8,7 @@
     
 
             $sql = "SELECT habitats.*, images.image_data FROM habitats LEFT JOIN images ON habitats.habitat_id = images.habitat_id";
-            $habitats = $base_de_donnees->query($sql)->fetchAll(PDO::FETCH_ASSOC);
+            $habitats = $bdd->query($sql)->fetchAll(PDO::FETCH_ASSOC);
 
             if (count($habitats) > 0) {
                 foreach ($habitats as $habitat) {
@@ -31,5 +31,4 @@
             ?>
         </div>
     </div>
-    
 <?php require_once '../template/footer.php'; ?>
