@@ -1,13 +1,15 @@
 <?php
 session_start();
 
+require_once '../env.php';
+
 if (isset($_POST['Se_connecter'])) {
     if (!empty($_POST['username']) && !empty($_POST['password'])) {
         $username = htmlspecialchars($_POST['username']);
         $password = $_POST['password'];
 
      
-        $bdd = new PDO('mysql:host=localhost;dbname=arcadia', 'root', '');
+   
         $statement = $bdd->prepare('SELECT* FROM utilisateurs WHERE username = :username');
         $statement->bindValue(':username', $username);
         $statement->execute();
