@@ -1,12 +1,6 @@
 <?php
 require_once '../template/header.php';
 
-try {
-    $bdd = new PDO('mysql:host=localhost;dbname=arcadia', 'root', '');
-    $bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-} catch (PDOException $e) {
-    die('Erreur de connexion : ' . $e->getMessage());
-}
 
 $sql = "SELECT animaux.prenom, alimentation.date, alimentation.type_nourriture, alimentation.quantite_grammes, alimentation.heure 
         FROM alimentation 
@@ -15,9 +9,18 @@ $sql = "SELECT animaux.prenom, alimentation.date, alimentation.type_nourriture, 
 $alimentation = $bdd->query($sql)->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Suivi de la Nourriture des Animaux</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
     <main>
         <div class="container">
-            <h1>Suivi de la Nourriture des Animaux</h1>
+            <h1 class="suivi_nourriture_animaux">Suivi de la Nourriture des Animaux</h1>
             <?php if (count($alimentation) > 0): ?>
                 <table class="table_alimentation">
                     <thead>
@@ -25,26 +28,26 @@ $alimentation = $bdd->query($sql)->fetchAll(PDO::FETCH_ASSOC);
                             <th>Animal</th>
                             <th>Date</th>
                             <th>Heure</th>
-                            <th>Nourriture</th>
-                            <th>Quantité (g)</th>
+                            <th>Type de Nourriture</th>
+                            <th>Quantité (grammes)</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <?php foreach ($alimentation as $entry): ?>
+                        <?php foreach ($alimentation as $row): ?>
                             <tr>
-                                <td><?php echo $entry['prenom']; ?></td>
-                                <td><?php echo $entry['date']; ?></td>
-                                <td><?php echo $entry['heure']; ?></td>
-                                <td><?php echo $entry['type_nourriture']; ?></td>
-                                <td><?php echo $entry['quantite_grammes']; ?></td>
+                                <td><?php echo $row['prenom']; ?></td>
+                                <td><?php echo $row['date']; ?></td>
+                                <td><?php echo $row['heure']; ?></td>
+                                <td><?php echo $row['type_nourriture']; ?></td>
+                                <td><?php echo $row['quantite_grammes']; ?></td>
                             </tr>
                         <?php endforeach; ?>
                     </tbody>
-                </table>
+                </table>g
             <?php else: ?>
-                <p>Aucune donnée d'alimentation disponible.</p>
+                <p>Aucune donnée disponible.</p>
             <?php endif; ?>
         </div>
     </main>
-
-<?php require_once '../template/footer.php'; ?>
+</body>
+</html>
