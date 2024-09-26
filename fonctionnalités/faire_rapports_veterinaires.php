@@ -1,17 +1,12 @@
 <?php
 session_start();
+require_once '../env.php';
 
 if (!isset($_SESSION['role']) || ($_SESSION['role'] != 3 && $_SESSION['role'] != 1)) {
     echo 'Accès refusé. Seuls les vétérinaires peuvent accéder à cette page.';
     exit();
 }
 
-try {
-    $bdd = new PDO('mysql:host=localhost;dbname=arcadia', 'root', '');
-    $bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-} catch (PDOException $e) {
-    die('Erreur de connexion : ' . $e->getMessage());
-}
 
 $sql = "SELECT animal_id, prenom FROM animaux";
 $statement = $bdd->prepare($sql);
