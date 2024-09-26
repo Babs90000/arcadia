@@ -18,14 +18,6 @@ if (isset($_POST['Creer'])) {
         $role_id = htmlspecialchars($_POST['role']);
         $label = 'Label par défaut';
 
-        
-        try {
-            $bdd = new PDO('mysql:host=localhost;dbname=arcadia', 'root', '');
-        } catch (PDOException $e) {
-            echo 'Erreur de connexion : ' . $e->getMessage();
-            exit();
-        }
-
        
         $message = Admin::creerUtilisateur($bdd, $username, $password, $nom, $prenom, $role_id, $label);
         echo $message;
