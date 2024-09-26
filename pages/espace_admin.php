@@ -1,5 +1,7 @@
 <?php
+
 require_once '../template/header.php';
+
 
 if (!isset($_SESSION['role']) || $_SESSION['role'] !== 1) {
  
@@ -41,5 +43,7 @@ switch ($role_utilisateur) {
         
         </div>
     </main>
+
+   
 </body>
 </html>
