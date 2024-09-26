@@ -7,7 +7,6 @@ if (!isset($_SESSION['role']) || ($_SESSION['role'] != 3 && $_SESSION['role'] !=
     exit();
 }
 
-
 $sql = "SELECT animal_id, prenom FROM animaux";
 $statement = $bdd->prepare($sql);
 $statement->execute();
