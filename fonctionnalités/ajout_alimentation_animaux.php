@@ -1,21 +1,13 @@
 <?php
 require_once '../template/header.php';
 
-// Vérifier si l'utilisateur est connecté et s'il a les droits nécessaires
-if (!isset($_SESSION['role']) || ($_SESSION['role'] != 2 && $_SESSION['role'] != 1)) { // Supposons que le rôle 2 est pour les employés
+
+if (!isset($_SESSION['role']) || ($_SESSION['role'] != 2 && $_SESSION['role'] != 1)) { 
     echo 'Accès refusé. Seuls les employés ou l\'administrateur peuvent accéder à cette page.';
     exit();
 }
 
-// Connexion à la base de données
-try {
-    $bdd = new PDO('mysql:host=localhost;dbname=arcadia', 'root', '');
-    $bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-} catch (PDOException $e) {
-    die('Erreur de connexion : ' . $e->getMessage());
-}
 
-// Gestion des requêtes POST pour ajouter une consommation de nourriture
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (!empty($_POST['animal_id']) && !empty($_POST['date']) && !empty($_POST['heure']) && !empty($_POST['nourriture']) && !empty($_POST['quantite']) && !empty($_POST['username'])) {
         $animal_id = (int)$_POST['animal_id'];
@@ -23,9 +15,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $heure = htmlspecialchars($_POST['heure']);
         $nourriture = htmlspecialchars($_POST['nourriture']);
         $quantite = (int)$_POST['quantite'];
-        $username = htmlspecialchars($_POST['username']); // Récupérer le nom d'utilisateur depuis le formulaire
+        $username = htmlspecialchars($_POST['username']); 
 
-        // Récupérer le race_id de l'animal sélectionné
+       
         $stmt = $bdd->prepare('SELECT race_id FROM animaux WHERE animal_id = :animal_id');
         $stmt->bindValue(':animal_id', $animal_id, PDO::PARAM_INT);
         $stmt->execute();
@@ -36,8 +28,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             exit();
         }
         $race_id = $race['race_id'];
-
-        // Insertion dans la table alimentation
+     
         $stmt = $bdd->prepare('INSERT INTO alimentation (animal_id, date, heure, type_nourriture, quantite_grammes, race_id, username) VALUES (:animal_id, :date, :heure, :type_nourriture, :quantite_grammes, :race_id, :username)');
         $stmt->bindValue(':animal_id', $animal_id, PDO::PARAM_INT);
         $stmt->bindValue(':date', $date, PDO::PARAM_STR);
@@ -60,7 +51,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 }
 
-// Récupération des animaux
+
 $query = 'SELECT animal_id, prenom FROM animaux';
 $animaux = $bdd->query($query)->fetchAll(PDO::FETCH_ASSOC);
 ?>
