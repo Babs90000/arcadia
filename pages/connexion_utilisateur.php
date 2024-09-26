@@ -39,7 +39,6 @@ if (isset($_POST['Se_connecter'])) {
 }
 
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -117,4 +116,3 @@ if (isset($_POST['Se_connecter'])) {
 </body>
 
 </html>
-
