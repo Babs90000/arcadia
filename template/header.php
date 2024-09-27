@@ -76,7 +76,7 @@ foreach ($horaires as $horaire) {
         </ul>
         <?php if (isset($_SESSION['role'])): ?>
               
-                <form method="POST" action="../git deconnexion.php" >
+                <form method="POST" action="../deconnexion.php" >
                     <button type="submit"class="btn_deconnexion">Déconnexion</button>
                 </form>
             <?php else: ?>
