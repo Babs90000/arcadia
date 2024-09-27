@@ -1,14 +1,17 @@
 <?php require_once '../template/header.php'; ?>
+<link rel="stylesheet" href="../style.css" />
 <link rel="stylesheet" href="./style_rapports_veterinaires.css" />
 
     <h1>Rapports Vétérinaires</h1>
+    <div class="rapports_veterinaires">
 
     <form method="GET" action="rapports_veterinaires.php">
         <label for="search">Rechercher par prénom de l'animal :</label>
         <input type="text" id="search" name="search" placeholder="Entrez le prénom de l'animal">
         <button type="submit">Rechercher</button>
     </form>
-    <div class="rapports_veterinaires">
+
+  
         <?php
 
         $search = isset($_GET['search']) ? $_GET['search'] : '';
