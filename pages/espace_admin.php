@@ -34,12 +34,12 @@ switch ($role_utilisateur) {
             <h1>Bienvenue dans l'Espace Admin</h1>
             <p>Bonjour <?php echo $prenom; ?>, vous êtes connecté !</p>
             <a href="fonctionnalités/gestion_service.php">Gestion des services</a><br>
-        <a href="fonctionnalités/inscription_utilisateur.php">Gestion des utilisateurs</a><br>
-        <a href="fonctionnalités/gestion_animaux.php">Gestion des animaux</a><br>
-        <a href="pages/gestion_habitat.php">Gestion des habitats</a><br>
-        <a href="fonctionnalités/modification_horaire.php">Modification des horaires</a><br>
-        <a href="pages/rapports_veterinaires.php">Rapports vétérinaires</a><br>
-        <a href="fonctionnalités/valider_avis.php">Valider un avis</a><br>
+        <a href="../fonctionnalités/inscription_utilisateur.php">Gestion des utilisateurs</a><br>
+        <a href="../fonctionnalités/gestion_animaux.php">Gestion des animaux</a><br>
+        <a href="../fonctionnalités/gestion_habitat.php">Gestion des habitats</a><br>
+        <a href="../fonctionnalités/modification_horaire.php">Modification des horaires</a><br>
+        <a href="rapports_veterinaires.php">Rapports vétérinaires</a><br>
+        <a href="../fonctionnalités/valider_avis.php">Valider un avis</a><br>
         
         </div>
     </main>
