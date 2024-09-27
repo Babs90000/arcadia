@@ -64,7 +64,7 @@
                     foreach ($habitats as $habitat) {
                         echo "<div class='col-md-4 mb-4'>";
                         echo "<div class='card habitat_item'>";
-                        echo "<a href='./pages/detail_habitat.php?habitat_id=" . $habitat['habitat_id'] . "' class='text-decoration-none'>";
+                        echo "<a href='detail_habitat.php?habitat_id=" . $habitat['habitat_id'] . "' class='text-decoration-none'>";
                         echo "<div class='card-body'>";
                         echo "<p class='card-text text-center text-dark font-weight-bold'>" . $habitat['nom'] . "</p>";
                         echo "</div>";
@@ -99,7 +99,6 @@
         } else {
             echo "<p>Aucun avis disponible.</p>"; 
         }
-        
             
         ?>
     </div>
