@@ -1,7 +1,7 @@
 <?php
 
 if (getenv('JAWSDB_URL') !== false) {
-    $url = getenv('https://arcadia-project-155bc9d56c41.herokuapp.com/');
+    $url = getenv('JAWSDB_URL');
     $dbparts = parse_url($url);
   
     $hostname = $dbparts['host'];
