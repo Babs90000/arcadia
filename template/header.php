@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once __DIR__ . '/../env.php';
+require_once __DIR__ . '../env.php';
 
 $sql = "SELECT type_jour, heure_ouverture, heure_fermeture FROM horaires_ouverture";
 $statement = $bdd->prepare($sql);
@@ -70,18 +70,18 @@ foreach ($horaires as $horaire) {
         />
         <ul>
           <li><a href="../index.php">Accueil</a></li>
-          <li><a href="../pages/page_services.php">Services</a></li>
-          <li><a href="../pages/page_habitat.php">Habitats</a></li>
-          <li><a href="../pages/avis.php">Vos avis</a></li>
+          <li><a href="../page_services.php">Services</a></li>
+          <li><a href="../page_habitat.php">Habitats</a></li>
+          <li><a href="../avis.php">Vos avis</a></li>
         </ul>
         <?php if (isset($_SESSION['role'])): ?>
               
-                <form method="POST" action="../fonctionnalités/deconnexion.php" >
+                <form method="POST" action="../git deconnexion.php" >
                     <button type="submit"class="btn_deconnexion">Déconnexion</button>
                 </form>
             <?php else: ?>
                 
-                <a href="../pages/connexion_utilisateur.php" class="btn_connexion">
+                <a href="../connexion_utilisateur.php" class="btn_connexion">
                     <i class="fa-solid fa-right-to-bracket"></i> Espace employé
                 </a>
             <?php endif; ?>
