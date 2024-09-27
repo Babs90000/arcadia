@@ -1,5 +1,5 @@
 <?php
-require_once '../template/header.php';
+require_once './template/header.php';
 
 
 if (!isset($_SESSION['role']) || ($_SESSION['role'] != 2 && $_SESSION['role'] != 1)) { 
@@ -56,7 +56,7 @@ $query = 'SELECT animal_id, prenom FROM animaux';
 $animaux = $bdd->query($query)->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
-<link rel="stylesheet" href="../pages/style_formulaire_nourriture.css" />
+<link rel="stylesheet" href="style_formulaire_nourriture.css" />
 
 
     <main>

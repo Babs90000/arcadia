@@ -86,7 +86,7 @@ $services = $bdd->query($query)->fetchAll(PDO::FETCH_ASSOC);
  
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-    <link rel="stylesheet" href="../style.css" />
+    <link rel="stylesheet" href="style.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     
@@ -102,7 +102,7 @@ $services = $bdd->query($query)->fetchAll(PDO::FETCH_ASSOC);
     ></script>
 
 
-    <script defer href="../script.js"></script>
+    <script defer href="script.js"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
@@ -114,24 +114,24 @@ $services = $bdd->query($query)->fetchAll(PDO::FETCH_ASSOC);
     <header>
       <nav>
         <img
-          src="../site arcadia image/Logo/logo arcadia sans fond.png"
+          src="./site arcadia image/Logo/logo arcadia sans fond.png"
           alt="Logo du zoo Arcadia"
           class="logo_arcadia"
         />
         <ul>
-          <li><a href="../index.php">Accueil</a></li>
-          <li><a href="../pages/page_services.php">Services</a></li>
-          <li><a href="../pages/page_habitat.php">Habitats</a></li>
-          <li><a href="../pages/avis.php">Vos avis</a></li>
+          <li><a href="index.php">Accueil</a></li>
+          <li><a href="page_services.php">Services</a></li>
+          <li><a href="page_habitat.php">Habitats</a></li>
+          <li><a href="avis.php">Vos avis</a></li>
         </ul>
         <?php if (isset($_SESSION['role'])): ?>
               
-                <form method="POST" action="../fonctionnalités/deconnexion.php" >
+                <form method="POST" action="deconnexion.php" >
                     <button type="submit"class="btn_deconnexion">Déconnexion</button>
                 </form>
             <?php else: ?>
                 
-                <a href="../pages/connexion_utilisateur.php" class="btn_connexion">
+                <a href="connexion_utilisateur.php" class="btn_connexion">
                     <i class="fa-solid fa-right-to-bracket"></i> Espace employé
                 </a>
             <?php endif; ?>
@@ -172,19 +172,19 @@ $services = $bdd->query($query)->fetchAll(PDO::FETCH_ASSOC);
         <?php if (!empty($services)): ?>
             <?php foreach ($services as $service): ?>
                 <div class="service-card">
-                    <h4><?php echo htmlspecialchars($service['nom']); ?></h4>
-                    <p><strong>Description:</strong> <?php echo htmlspecialchars($service['description']); ?></p>
+                    <h4><?php echo $service['nom']; ?></h4>
+                    <p><strong>Description:</strong> <?php echo $service['description']; ?></p>
 
                     <form method="POST" class="mt-3">
                         <input type="hidden" name="action" value="modifier">
                         <input type="hidden" name="service_id" value="<?php echo $service['service_id']; ?>">
                         <div class="form-group">
                             <label for="nom_<?php echo $service['service_id']; ?>">Nom:</label>
-                            <input type="text" class="form-control" id="nom_<?php echo $service['service_id']; ?>" name="nom" value="<?php echo htmlspecialchars($service['nom']); ?>" required>
+                            <input type="text" class="form-control" id="nom_<?php echo $service['service_id']; ?>" name="nom" value="<?php echo $service['nom']; ?>" required>
                         </div>
                         <div class="form-group">
                             <label for="description_<?php echo $service['service_id']; ?>">Description:</label>
-                            <textarea class="form-control" id="description_<?php echo $service['service_id']; ?>" name="description" required><?php echo htmlspecialchars($service['description']); ?></textarea>
+                            <textarea class="form-control" id="description_<?php echo $service['service_id']; ?>" name="description" required><?php echo $service['description']; ?></textarea>
                         </div>
                         <button type="submit" class="btn btn-primary">Modifier</button>
                     </form>

@@ -1,4 +1,4 @@
-<?php require_once '../template/header.php'; ?>
+<?php require_once './template/header.php'; ?>
 
 <div class="containerDetailHabitat ">
         <h2 class="text-success text-center mb-4">Détail de l'Habitat</h2>
@@ -16,9 +16,9 @@
                     $habitat = $statement->fetch(PDO::FETCH_ASSOC);
 
                     if ($habitat) {
-                        echo "<p><strong>Nom:</strong> " . htmlspecialchars($habitat['nom']) . "</p>";
-                        echo "<p><strong>Description:</strong> " . htmlspecialchars($habitat['description']) . "</p>";
-                        echo "<p><strong>Commentaire:</strong> " . htmlspecialchars($habitat['commentaire_habitat']) . "</p>";
+                        echo "<p><strong>Nom:</strong> " . $habitat['nom'] . "</p>";
+                        echo "<p><strong>Description:</strong> " . $habitat['description'] . "</p>";
+                        echo "<p><strong>Commentaire:</strong> " . $habitat['commentaire_habitat'] . "</p>";
 
                         if ($habitat['image_data']) {
                             echo '<img src="data:image/jpeg;base64,' . base64_encode($habitat['image_data']) . '" alt="Image de l\'habitat" class="img-fluid mb-3" style="max-width: 600px;">';
@@ -36,7 +36,7 @@
                             echo "<h3>Animaux dans cet habitat :</h3>";
                             echo "<ul class='list-groupAnimaux d-flex justify-content-center'>";
                             foreach ($animaux as $animal) {
-                                echo "<li class='list-group-item'><a href='detail_animal.php?animal_id=" . $animal['animal_id'] . "'>" . htmlspecialchars($animal['prenom']) . " - " . htmlspecialchars($animal['label']) . "</a></li>";
+                                echo "<li class='list-group-item'><a href='detail_animal.php?animal_id=" . $animal['animal_id'] . "'>" . $animal['prenom'] . " - " . $animal['label'] . "</a></li>";
                             }
                             echo "</ul>";
                         } else {
@@ -54,5 +54,5 @@
         <p class="text-center"><a href="page_habitat.php" class="btn btn-success">Retour à la liste des habitats</a></p>
     </div>
 
-<?require_once '../template/footer.php'; ?>
+<?require_once './template/footer.php'; ?>
     

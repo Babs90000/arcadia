@@ -6,7 +6,7 @@
     
     
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <link rel="stylesheet" href="../style.css" />
+    <link rel="stylesheet" href="style.css" />
 </head>
 <body> 
  
@@ -16,7 +16,7 @@
         <div class="card mb-4">
             <div class="card-body text-center">
                 <?php
-              require_once './env.php';
+              require_once 'env.php';
 
                 if (isset($_GET['animal_id'])) {
                     $animal_id = $_GET['animal_id'];
@@ -24,7 +24,7 @@
                     $sql = "SELECT animaux.*, races.label AS race_label FROM animaux 
                             LEFT JOIN races ON animaux.race_id = races.race_id 
                             WHERE animaux.animal_id = :animal_id";
-                    $statement = $base_de_donnees->prepare($sql);
+                    $statement = $bdd->prepare($sql);
                     $statement->execute([':animal_id' => $animal_id]);
                     $animal = $statement->fetch(PDO::FETCH_ASSOC);
 
@@ -35,7 +35,7 @@
                         echo "<p><strong>Description:</strong> " . $animal['description'] . "</p>";
 
                         $sql = "SELECT image_data FROM images WHERE animal_id = :animal_id";
-                        $statement = $base_de_donnees->prepare($sql);
+                        $statement = $bdd->prepare($sql);
                         $statement->execute([':animal_id' => $animal_id]);
                         $images = $statement->fetchAll(PDO::FETCH_ASSOC);
 
@@ -55,19 +55,19 @@
                         $sql = "SELECT etat_animal, nourriture_proposee, grammage_nourriture, date_passage, detail_etat_animal 
                                 FROM rapports_veterinaires 
                                 WHERE animal_id = :animal_id";
-                        $statement = $base_de_donnees->prepare($sql);
+                        $statement = $bdd->prepare($sql);
                         $statement->execute([':animal_id' => $animal_id]);
                         $rapports = $statement->fetchAll(PDO::FETCH_ASSOC);
 
                         if ($rapports) {
                             echo "<h3 class='text-success'>Rapports Vétérinaires</h3>";
                             foreach ($rapports as $rapport) {
-                                echo "<p><strong>État de l'animal:</strong> " . htmlspecialchars($rapport['etat_animal']) . "</p>";
-                                echo "<p><strong>Nourriture proposée:</strong> " . htmlspecialchars($rapport['nourriture_proposee']) . "</p>";
-                                echo "<p><strong>Grammage de la nourriture:</strong> " . htmlspecialchars($rapport['grammage_nourriture']) . "</p>";
-                                echo "<p><strong>Date de passage:</strong> " . htmlspecialchars($rapport['date_passage']) . "</p>";
+                                echo "<p><strong>État de l'animal:</strong> " . $rapport['etat_animal'] . "</p>";
+                                echo "<p><strong>Nourriture proposée:</strong> " . $rapport['nourriture_proposee'] . "</p>";
+                                echo "<p><strong>Grammage de la nourriture:</strong> " . $rapport['grammage_nourriture'] . "</p>";
+                                echo "<p><strong>Date de passage:</strong> " . $rapport['date_passage'] . "</p>";
                                 if (!empty($rapport['detail_etat_animal'])) {
-                                    echo "<p><strong>Détail de l'état de l'animal:</strong> " . htmlspecialchars($rapport['detail_etat_animal']) . "</p>";
+                                    echo "<p><strong>Détail de l'état de l'animal:</strong> " . $rapport['detail_etat_animal'] . "</p>";
                                 }
                                 echo "<hr>";
                             }

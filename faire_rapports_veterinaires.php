@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once '../env.php';
+require_once 'env.php';
 
 if (!isset($_SESSION['role']) || ($_SESSION['role'] != 3 && $_SESSION['role'] != 1)) {
     echo 'Accès refusé. Seuls les vétérinaires peuvent accéder à cette page.';
@@ -61,7 +61,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
  
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-    <link rel="stylesheet" href="../style.css" />
+    <link rel="stylesheet" href="style.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     
@@ -81,7 +81,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     ></script>
 
 
-    <script defer href="../script.js"></script>
+    <script defer href="script.js"></script>
     <script defer src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script defer src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
     <script defer src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
@@ -93,24 +93,24 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <header>
       <nav>
         <img
-          src="../site arcadia image/Logo/logo arcadia sans fond.png"
+          src="./site arcadia image/Logo/logo arcadia sans fond.png"
           alt="Logo du zoo Arcadia"
           class="logo_arcadia"
         />
         <ul>
-          <li><a href="../index.php">Accueil</a></li>
-          <li><a href="../pages/page_services.php">Services</a></li>
-          <li><a href="../pages/page_habitat.php">Habitats</a></li>
-          <li><a href="../pages/avis.php">Vos avis</a></li>
+          <li><a href="index.php">Accueil</a></li>
+          <li><a href="page_services.php">Services</a></li>
+          <li><a href="page_habitat.php">Habitats</a></li>
+          <li><a href="avis.php">Vos avis</a></li>
         </ul>
         <?php if (isset($_SESSION['role'])): ?>
               
-                <form method="POST" action="../fonctionnalités/deconnexion.php" >
+                <form method="POST" action="deconnexion.php" >
                     <button type="submit"class="btn_deconnexion">Déconnexion</button>
                 </form>
             <?php else: ?>
                 
-                <a href="../pages/connexion_utilisateur.php" class="btn_connexion">
+                <a href="connexion_utilisateur.php" class="btn_connexion">
                     <i class="fa-solid fa-right-to-bracket"></i> Espace employé
                 </a>
             <?php endif; ?>
@@ -136,7 +136,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <select class="form-control" id="animal_id" name="animal_id" required>
                     <option value="">--Sélectionner un animal--</option>
                     <?php foreach ($animaux as $animal): ?>
-                        <option value="<?php echo htmlspecialchars($animal['animal_id']); ?>"><?php echo htmlspecialchars($animal['prenom']); ?></option>
+                        <option value="<?php echo $animal['animal_id']; ?>"><?php echo $animal['prenom']; ?></option>
                     <?php endforeach; ?>
                 </select>
             </div>

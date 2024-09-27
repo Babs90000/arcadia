@@ -1,6 +1,6 @@
 <?php
 
-require_once '../template/header.php';
+require_once './template/header.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['laisser_avis'])) {
     $pseudo = $_POST['pseudo'];

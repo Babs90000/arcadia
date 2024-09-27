@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-require_once '../env.php';
+require_once 'env.php';
 
 if (isset($_POST['Se_connecter'])) {
     if (!empty($_POST['username']) && !empty($_POST['password'])) {
@@ -24,10 +24,10 @@ if (isset($_POST['Se_connecter'])) {
             $_SESSION['message_connexion'] = 'Bonjour '. $user['prenom'].' '. $user['nom'].' Vous êtes connecté ! ';
            
             if ($_SESSION['role'] == 1) {
-                header('Location: ./espace_admin.php');
+                header('Location: espace_admin.php');
             } elseif ($_SESSION['role'] == 2) {
-                header('Location: ./espace_employe.php');
-            } else  { header('Location: ./espace_veterinaire.php');
+                header('Location: espace_employe.php');
+            } else  { header('Location: espace_veterinaire.php');
             }
             
         } else {
@@ -54,8 +54,8 @@ if (isset($_POST['Se_connecter'])) {
  
     
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-    <link rel="stylesheet" href="../style.css" />
-    <link rel="stylesheet" href="./style_page_connexion.css" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="style_page_connexion.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     
@@ -89,13 +89,13 @@ if (isset($_POST['Se_connecter'])) {
           class="logo_arcadia"
         />
         <ul>
-          <li><a href="../index.php">Accueil</a></li>
-          <li><a href="./page_services.php">Services</a></li>
-          <li><a href="./page_habitat.php">Habitats</a></li>
-          <li><a href="./avis.php">Vos avis</a></li>
+          <li><a href="index.php">Accueil</a></li>
+          <li><a href="page_services.php">Services</a></li>
+          <li><a href="page_habitat.php">Habitats</a></li>
+          <li><a href="avis.php">Vos avis</a></li>
         </ul>
 
-        <a href="./connexion_utilisateur.php" class="btn_connexion"
+        <a href="connexion_utilisateur.php" class="btn_connexion"
           ><i class="fa-solid fa-right-to-bracket"></i> Espace employé</a>
 
       </nav>

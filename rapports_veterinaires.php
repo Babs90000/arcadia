@@ -1,6 +1,6 @@
-<?php require_once '../template/header.php'; ?>
-<link rel="stylesheet" href="../style.css" />
-<link rel="stylesheet" href="./style_rapports_veterinaires.css" />
+<?php require_once './template/header.php'; ?>
+<link rel="stylesheet" href="style.css" />
+<link rel="stylesheet" href="style_rapports_veterinaires.css" />
 
     <h1>Rapports Vétérinaires</h1>
     <div class="rapports_veterinaires">

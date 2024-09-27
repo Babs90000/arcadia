@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once '../env.php';
+require_once 'env.php';
 
 if (!isset($_SESSION['role']) || ($_SESSION['role'] != 1 && $_SESSION['role'] != 2)) {
     echo 'Accès refusé. Seuls les administrateurs et les employés peuvent accéder à cette page.';
@@ -26,7 +26,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             }
 
             $sql = "INSERT INTO habitats (nom, description, commentaire_habitat) VALUES (:nom, :description, :commentaire_habitat)";
-            $statement = $base_de_donnees->prepare($sql);
+            $statement = $bdd->prepare($sql);
             $statement->execute([
                 ':nom' => $nom,
                 ':description' => $description,
@@ -34,9 +34,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             ]);
 
             if ($image) {
-                $habitat_id = $base_de_donnees->lastInsertId();
+                $habitat_id = $bdd->lastInsertId();
                 $sql = "INSERT INTO images (habitat_id, image_data) VALUES (:habitat_id, :image_data)";
-                $statement = $base_de_donnees->prepare($sql);
+                $statement = $bdd->prepare($sql);
                 $statement->execute([
                     ':habitat_id' => $habitat_id,
                     ':image_data' => $image
@@ -53,11 +53,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $habitat_id = htmlspecialchars($_POST['habitat_id']);
 
         $sql = "DELETE FROM habitats WHERE habitat_id = :habitat_id";
-        $statement = $base_de_donnees->prepare($sql);
+        $statement = $bdd->prepare($sql);
         $statement->execute([':habitat_id' => $habitat_id]);
 
         $sql = "DELETE FROM images WHERE habitat_id = :habitat_id";
-        $statement = $base_de_donnees->prepare($sql);
+        $statement = $bdd->prepare($sql);
         $statement->execute([':habitat_id' => $habitat_id]);
 
         $alert_message = 'Habitat supprimé avec succès.';
@@ -113,24 +113,24 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <header>
       <nav>
         <img
-          src="../site arcadia image/Logo/logo arcadia sans fond.png"
+          src="./site arcadia image/Logo/logo arcadia sans fond.png"
           alt="Logo du zoo Arcadia"
           class="logo_arcadia"
         />
         <ul>
-          <li><a href="../index.php">Accueil</a></li>
-          <li><a href="../pages/page_services.php">Services</a></li>
-          <li><a href="../pages/page_habitat.php">Habitats</a></li>
-          <li><a href="../pages/avis.php">Vos avis</a></li>
+          <li><a href="index.php">Accueil</a></li>
+          <li><a href="page_services.php">Services</a></li>
+          <li><a href="page_habitat.php">Habitats</a></li>
+          <li><a href="avis.php">Vos avis</a></li>
         </ul>
         <?php if (isset($_SESSION['role'])): ?>
               
-                <form method="POST" action="../fonctionnalités/deconnexion.php" >
+                <form method="POST" action="deconnexion.php" >
                     <button type="submit"class="btn_deconnexion">Déconnexion</button>
                 </form>
             <?php else: ?>
                 
-                <a href="../pages/connexion_utilisateur.php" class="btn_connexion">
+                <a href="connexion_utilisateur.php" class="btn_connexion">
                     <i class="fa-solid fa-right-to-bracket"></i> Espace employé
                 </a>
             <?php endif; ?>
@@ -182,9 +182,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <?php if (count($habitats) > 0): ?>
             <?php foreach ($habitats as $habitat): ?>
                 <div class="habitat-card">
-                    <p><strong>Nom:</strong> <?php echo htmlspecialchars($habitat['nom']); ?></p>
-                    <p><strong>Description:</strong> <?php echo htmlspecialchars($habitat['description']); ?></p>
-                    <p><strong>Commentaire:</strong> <?php echo htmlspecialchars($habitat['commentaire_habitat']); ?></p>
+                    <p><strong>Nom:</strong> <?php echo $habitat['nom']; ?></p>
+                    <p><strong>Description:</strong> <?php echo $habitat['description']; ?></p>
+                    <p><strong>Commentaire:</strong> <?php echo $habitat['commentaire_habitat']; ?></p>
                     <?php if ($habitat['image_data']): ?>
                         <img src="data:image/jpeg;base64,<?php echo base64_encode($habitat['image_data']); ?>" alt="Image de l'habitat">
                     <?php endif; ?>
@@ -197,16 +197,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                             <?php if ($_SESSION['role'] == 1): ?>
                                 <div class="form-group">
                                     <label for="nom_<?php echo $habitat['habitat_id']; ?>">Nom:</label>
-                                    <input type="text" class="form-control" id="nom_<?php echo $habitat['habitat_id']; ?>" name="nom" value="<?php echo htmlspecialchars($habitat['nom']); ?>" required>
+                                    <input type="text" class="form-control" id="nom_<?php echo $habitat['habitat_id']; ?>" name="nom" value="<?php echo $habitat['nom']; ?>" required>
                                 </div>
                                 <div class="form-group">
                                     <label for="description_<?php echo $habitat['habitat_id']; ?>">Description:</label>
-                                    <textarea class="form-control" id="description_<?php echo $habitat['habitat_id']; ?>" name="description" required><?php echo htmlspecialchars($habitat['description']); ?></textarea>
+                                    <textarea class="form-control" id="description_<?php echo $habitat['habitat_id']; ?>" name="description" required><?php echo $habitat['description']; ?></textarea>
                                 </div>
                             <?php endif; ?>
                             <div class="form-group">
                                 <label for="commentaire_habitat_<?php echo $habitat['habitat_id']; ?>">Commentaire:</label>
-                                <textarea class="form-control" id="commentaire_habitat_<?php echo $habitat['habitat_id']; ?>" name="commentaire_habitat" required><?php echo htmlspecialchars($habitat['commentaire_habitat']); ?></textarea>
+                                <textarea class="form-control" id="commentaire_habitat_<?php echo $habitat['habitat_id']; ?>" name="commentaire_habitat" required><?php echo $habitat['commentaire_habitat']; ?></textarea>
                             </div>
                             <div class="form-group">
                                 <label for="image_<?php echo $habitat['habitat_id']; ?>">Image:</label>

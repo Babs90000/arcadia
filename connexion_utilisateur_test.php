@@ -1,13 +1,13 @@
 <?php
 session_start();
-//entrer des identifiants pour se connecter
+
 if (isset($_POST['Se_connecter'])) {
     if (!empty($_POST['username']) && !empty($_POST['password'])) {
         $username = htmlspecialchars($_POST['username']);
         $password = $_POST['password'];
 
-        //connexion à la base de données et verification présence utilisateur
-        $bdd = new PDO('mysql:host=localhost;dbname=arcadia', 'root', '');
+        
+       require_once 'env.php';
         $statement = $bdd->prepare('SELECT* FROM utilisateurs WHERE username = :username');
         $statement->bindValue(':username', $username);
         $statement->execute();
@@ -22,11 +22,11 @@ if (isset($_POST['Se_connecter'])) {
             $_SESSION['message_connexion'] = 'Bonjour ' . $user['prenom'] . ' ' . $user['nom'] . ' Vous êtes connecté ! ';
 
             if ($_SESSION['role'] == 1) {
-                header('Location: ./pages/espace_admin.php');
+                header('Location: espace_admin.php');
             } elseif ($_SESSION['role'] == 2) {
-                header('Location: ./espace_employe.php');
+                header('Location: espace_employe.php');
             } else {
-                header('Location: ./espace_veterinaire.php');
+                header('Location: espace_veterinaire.php');
             }
         } else {
             echo 'Identifiants incorrects';

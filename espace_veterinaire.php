@@ -1,6 +1,6 @@
 <?php
 
-require_once '../template/header.php';
+require_once './template/header.php';
 
 if (isset($_SESSION['message_connexion'])) {
     echo $_SESSION['message_connexion'];
@@ -32,14 +32,14 @@ switch ($role_utilisateur) {
         break;
 }
 ?>
-<link rel=stylesheet href="./style_espace_utilisateur.css">
+<link rel=stylesheet href="style_espace_utilisateur.css">
 <main>
     <div class="container">
         <h1>Bienvenue dans l'espace vétérinaires</h1>
         <p>Bonjour <?php echo $prenom; ?>, vous êtes connecté !</p>
-        <a href="../fonctionnalités/gestion_habitat.php">Laisser un commentaire sur un habitat</a><br>
-        <a href="../fonctionnalités/faire_rapports_veterinaires.php">faire un rapport vétérinaire</a><br>
-        <a href="./suivi_alimentation.php">Suivi alimentation animaux</a>
+        <a href="gestion_habitat.php">Laisser un commentaire sur un habitat</a><br>
+        <a href="faire_rapports_veterinaires.php">faire un rapport vétérinaire</a><br>
+        <a href="suivi_alimentation.php">Suivi alimentation animaux</a>
 
     </div>
 </main>

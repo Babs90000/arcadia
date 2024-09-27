@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once '../env.php';
+require_once 'env.php';
 
 if (!isset($_SESSION['role']) || $_SESSION['role'] != '1') {
     echo 'Accès refusé. Seuls les administrateurs peuvent accéder à cette page.';
@@ -50,7 +50,7 @@ $horaires = $bdd->query($query)->fetchAll(PDO::FETCH_ASSOC);
  
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-    <link rel="stylesheet" href="../style.css" />
+    <link rel="stylesheet" href="style.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     
@@ -66,7 +66,7 @@ $horaires = $bdd->query($query)->fetchAll(PDO::FETCH_ASSOC);
     ></script>
 <!-- FIN POLICE D'ECRITURE -->
 
-    <script defer href="../script.js"></script>
+    <script defer href="script.js"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
@@ -83,19 +83,19 @@ $horaires = $bdd->query($query)->fetchAll(PDO::FETCH_ASSOC);
           class="logo_arcadia"
         />
         <ul>
-          <li><a href="../index.php">Accueil</a></li>
-          <li><a href="../pages/page_services.php">Services</a></li>
-          <li><a href="../pages/page_habitat.php">Habitats</a></li>
-          <li><a href="../pages/avis.php">Vos avis</a></li>
+          <li><a href="index.php">Accueil</a></li>
+          <li><a href="page_services.php">Services</a></li>
+          <li><a href="page_habitat.php">Habitats</a></li>
+          <li><a href="avis.php">Vos avis</a></li>
         </ul>
         <?php if (isset($_SESSION['role'])): ?>
               
-                <form method="POST" action="../fonctionnalités/deconnexion.php" >
+                <form method="POST" action="deconnexion.php" >
                     <button type="submit"class="btn_deconnexion">Déconnexion</button>
                 </form>
             <?php else: ?>
                 
-                <a href="../pages/connexion_utilisateur.php" class="btn_connexion">
+                <a href="connexion_utilisateur.php" class="btn_connexion">
                     <i class="fa-solid fa-right-to-bracket"></i> Espace employé
                 </a>
             <?php endif; ?>
@@ -123,7 +123,7 @@ $horaires = $bdd->query($query)->fetchAll(PDO::FETCH_ASSOC);
                 <select class="form-control" id="type_jour" name="type_jour" required>
                     <option value="">-- Veuillez choisir un type de jour --</option>
                     <?php foreach ($horaires as $horaire): ?>
-                        <option value="<?php echo htmlspecialchars($horaire['type_jour']); ?>"><?php echo htmlspecialchars($horaire['type_jour']); ?></option>
+                        <option value="<?php echo $horaire['type_jour']; ?>"><?php echo $horaire['type_jour']; ?></option>
                     <?php endforeach; ?>
                 </select>
             </div>
@@ -145,8 +145,8 @@ $horaires = $bdd->query($query)->fetchAll(PDO::FETCH_ASSOC);
             <?php foreach ($horaires as $horaire): ?>
                 <div class="horaire-card">
                     <h4><?php echo htmlspecialchars($horaire['type_jour']); ?></h4>
-                    <p><strong>Heure d'ouverture:</strong> <?php echo htmlspecialchars($horaire['heure_ouverture']); ?></p>
-                    <p><strong>Heure de fermeture:</strong> <?php echo htmlspecialchars($horaire['heure_fermeture']); ?></p>
+                    <p><strong>Heure d'ouverture:</strong> <?php echo $horaire['heure_ouverture']; ?></p>
+                    <p><strong>Heure de fermeture:</strong> <?php echo $horaire['heure_fermeture']; ?></p>
                 </div>
                 <?php endforeach; ?>
                 <?php else: ?>
