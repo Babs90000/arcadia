@@ -1,6 +1,6 @@
 <?php
 session_start();
-
+require_once = "env.php";
 
 $sql = "SELECT type_jour, heure_ouverture, heure_fermeture FROM horaires_ouverture";
 $statement = $bdd->prepare($sql);
