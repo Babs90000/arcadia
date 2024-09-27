@@ -27,22 +27,19 @@ switch ($role_utilisateur) {
         $role_label = 'Utilisateur';
         break;
 }
-function base_url($path = '') {
-    return 'http://' . $_SERVER['arcadia-project-155bc9d56c41.herokuapp.com'] . '/' . ltrim($path, '/');
-}
 ?>
 <link rel=stylesheet href="./style_espace_utilisateur.css">
 <main>
         <div class="container">
             <h1>Bienvenue dans l'Espace Admin</h1>
             <p>Bonjour <?php echo $prenom; ?>, vous êtes connecté !</p>
-            <a href="<?php echo base_url('fonctionnalités/gestion_service.php'); ?>">Gestion des services</a><br>
-        <a href="<?php echo base_url('fonctionnalités/inscription_utilisateur.php'); ?>">Gestion des utilisateurs</a><br>
-        <a href="<?php echo base_url('fonctionnalités/gestion_animaux.php'); ?>">Gestion des animaux</a><br>
-        <a href="<?php echo base_url('pages/gestion_habitat.php'); ?>">Gestion des habitats</a><br>
-        <a href="<?php echo base_url('fonctionnalités/modification_horaire.php'); ?>">Modification des horaires</a><br>
-        <a href="<?php echo base_url('pages/rapports_veterinaires.php'); ?>">Rapports vétérinaires</a><br>
-        <a href="<?php echo base_url('fonctionnalités/valider_avis.php'); ?>">Valider un avis</a><br>
+            <a href="fonctionnalités/gestion_service.php">Gestion des services</a><br>
+        <a href="fonctionnalités/inscription_utilisateur.php">Gestion des utilisateurs</a><br>
+        <a href="fonctionnalités/gestion_animaux.php">Gestion des animaux</a><br>
+        <a href="pages/gestion_habitat.php">Gestion des habitats</a><br>
+        <a href="fonctionnalités/modification_horaire.php">Modification des horaires</a><br>
+        <a href="pages/rapports_veterinaires.php">Rapports vétérinaires</a><br>
+        <a href="fonctionnalités/valider_avis.php">Valider un avis</a><br>
         
         </div>
     </main>
