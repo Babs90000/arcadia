@@ -1,6 +1,6 @@
 <?php
 
-if (getenv('JAWSDB_URL') != false) {
+if (getenv('JAWSDB_URL') !== false) {
     $url = getenv('JAWSDB_URL');
     $dbparts = parse_url($url);
   
