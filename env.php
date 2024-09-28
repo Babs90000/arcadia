@@ -1,7 +1,7 @@
 <?php
 // Vérifiez si les variables de connexion sont définies via une URL de base de données
-if (isset($_ENV['DATABASE_URL'])) {
-    $dbparts = parse_url($_ENV['DATABASE_URL']);
+if (isset($_ENV['JAWS_DB'])) {
+    $dbparts = parse_url($_ENV['JAWS_DB']);
     $hostname = $dbparts['host'];
     $username = $dbparts['user'];
     $password = $dbparts['pass'];
