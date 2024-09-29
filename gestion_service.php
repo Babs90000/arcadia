@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-require_once '../env.php';
+require_once 'env.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $action = $_POST['action'] ?? '';
