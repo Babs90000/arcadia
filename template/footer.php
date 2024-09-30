@@ -1,12 +1,6 @@
 <?php
 
-try {
-  $bdd = new PDO('mysql:host=localhost;dbname=arcadia', 'root', '');
-  $bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-} catch (PDOException $e) {
-  echo 'Erreur de connexion : ' . $e->getMessage();
-  exit();
-}
+require_once '../env.php'
 
 // Récupérer les horaires d'ouverture existants
 $sql = "SELECT type_jour, heure_ouverture, heure_fermeture FROM horaires_ouverture";
