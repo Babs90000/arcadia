@@ -168,9 +168,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             </div>
             <button type="submit" class="btn btn-success">Créer Rapport</button>
         </form>
-        <a href="page_precedente.php" class="btn btn-secondary mt-3">Retour</a>
+        <button class="btn btn-secondary btn-retour" onclick="goBack()">Retour</button>
     </div>
 
+    <script>
+    function goBack() {
+        window.history.back();
+    }
+</script>
    
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
