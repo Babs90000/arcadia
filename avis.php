@@ -59,4 +59,4 @@ echo '<div class="alert alert-success" role="alert">Avis soumis avec succès. Il
 
 </div>
 
-<?php require_once '../template/footer.php'; ?>
+<?php require_once './template/footer.php'; ?>
