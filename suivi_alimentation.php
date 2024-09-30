@@ -42,7 +42,7 @@ $alimentation = $bdd->query($sql)->fetchAll(PDO::FETCH_ASSOC);
                             </tr>
                         <?php endforeach; ?>
                     </tbody>
-                </table>g
+                </table>
             <?php else: ?>
                 <p>Aucune donnée disponible.</p>
             <?php endif; ?>
