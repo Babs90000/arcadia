@@ -1,18 +1,17 @@
 <?php
 
-require_once '../env.php'
+require_once '../env.php';
 
-// Récupérer les horaires d'ouverture existants
 $sql = "SELECT type_jour, heure_ouverture, heure_fermeture FROM horaires_ouverture";
 $statement = $bdd->prepare($sql);
 $statement->execute();
 $horaires = $statement->fetchAll(PDO::FETCH_ASSOC);
 
-// Initialiser les variables pour les horaires
+
 $horaires_semaine = '';
 $horaires_autres = '';
 
-// Parcourir les résultats et assigner les horaires aux variables appropriées
+
 foreach ($horaires as $horaire) {
   if ($horaire['type_jour'] == 'En semaine') {
     $horaires_semaine = $horaire['heure_ouverture'] . ' - ' .$horaire['heure_fermeture'];
