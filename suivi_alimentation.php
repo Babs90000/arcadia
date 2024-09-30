@@ -1,5 +1,5 @@
 <?php
-require_once '../template/header.php';
+require_once './template/header.php';
 
 $sql = "SELECT animaux.prenom, alimentation.date, alimentation.type_nourriture, alimentation.quantite_grammes, alimentation.heure 
         FROM alimentation 
@@ -46,7 +46,13 @@ $alimentation = $bdd->query($sql)->fetchAll(PDO::FETCH_ASSOC);
             <?php else: ?>
                 <p>Aucune donnée disponible.</p>
             <?php endif; ?>
+<button class="btn btn-secondary btn-retour" onclick="goBack()">Retour</button>
         </div>
     </main>
+        <script>
+    function goBack() {
+        window.history.back();
+    }
+</script>
 </body>
 </html>
